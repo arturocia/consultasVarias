@@ -12,10 +12,19 @@ hibernate {
 // environment specific settings
 environments {
     development {
-        dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-        }
+		
+		// Change the values of these properties to the username, password and hostname
+		// for your SQL Server database
+		username = "sa"
+		password = "bimalatrop2014"
+		url = "jdbc:sqlserver://bimalatrop.no-ip.biz:1433;databaseName=dbamibsumautorizados"
+	
+		driverClassName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+		dialect = "org.hibernate.dialect.SQLServerDialect"
+	
+		
+		
+        
     }
     test {
         dataSource {
