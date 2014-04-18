@@ -1,8 +1,10 @@
 dataSource {
-    pooled = true
-    driverClassName = "org.h2.Driver"
     username = "sa"
-    password = ""
+	password = "bimalatrop2014"
+	url = "jdbc:sqlserver://bimalatrop.no-ip.biz:1433;databaseName=dbamibsumautorizados"
+
+	driverClassName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+	dialect = "org.hibernate.dialect.SQLServerDialect"
 }
 hibernate {
     cache.use_second_level_cache = true
