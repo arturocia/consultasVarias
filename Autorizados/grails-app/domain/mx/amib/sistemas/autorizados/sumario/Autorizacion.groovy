@@ -9,12 +9,12 @@ class Autorizacion {
 	String txCausarev
 	Date fhCreacion
 	Date fhModificacion
-	T007CTpautorizacion t007CTpautorizacion
+	Tpautorizacion t007CTpautorizacion
 	Certificacion t004TCertificacion
-	T011CSituacionaut t011CSituacionaut
+	Situacionaut t011CSituacionaut
 
 	static hasMany = [poderes: Poder]
-	static belongsTo = [Certificacion, T007CTpautorizacion, T011CSituacionaut]
+	static belongsTo = [Certificacion, Tpautorizacion,Situacionaut]
 
 	static mapping = {
 		table 't002_t_autorizacion'

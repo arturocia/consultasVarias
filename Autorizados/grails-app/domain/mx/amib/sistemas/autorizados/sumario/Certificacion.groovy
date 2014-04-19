@@ -6,12 +6,12 @@ class Certificacion {
 	Date fhFin
 	Date fhCreacion
 	Date fhModificacion
-	T008CTpcertificacion t008CTpcertificacion
+	Tpcertificacion t008CTpcertificacion
 	Sustentante sustenante
-	T013CFigura t013CFigura
+	Figura t013CFigura
 
 	static hasMany = [autorizaciones: Autorizacion]
-	static belongsTo = [Sustentante, T008CTpcertificacion, T013CFigura]
+	static belongsTo = [Sustentante, Tpcertificacion, Figura]
 
 	static mapping = {
 		table 't001_t_sustenante'

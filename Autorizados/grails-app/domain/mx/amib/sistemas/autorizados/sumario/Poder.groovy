@@ -6,10 +6,10 @@ class Poder {
 	Integer nuEscritura
 	Date fhCreacion
 	Date fhModificacion
-	T012CTppoder t012CTppoder
+	Tppoder t012CTppoder
 	Autorizacion t002TAutorizacion
 
-	static belongsTo = [Autorizacion, T012CTppoder]
+	static belongsTo = [Autorizacion, Tppoder]
 
 	static mapping = {
 		table 't003_t_poder'

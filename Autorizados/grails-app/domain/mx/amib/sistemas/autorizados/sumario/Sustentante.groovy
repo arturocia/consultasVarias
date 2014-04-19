@@ -9,10 +9,10 @@ class Sustentante {
 	Integer nuFolio
 	Date fhCreacion
 	Date fhModificacion
-	T006CInstitucion t006CInstitucion
+	Institucion t006CInstitucion
 
 	static hasMany = [certificaciones: Certificacion]
-	static belongsTo = [T006CInstitucion]
+	static belongsTo = [Institucion]
 
 	static mapping = {
 		table 't001_t_sustenante'
