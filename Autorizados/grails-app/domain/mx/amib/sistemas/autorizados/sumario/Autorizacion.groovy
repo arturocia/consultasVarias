@@ -1,6 +1,6 @@
 package mx.amib.sistemas.autorizados.sumario
 
-class T002TAutorizacion {
+class Autorizacion {
 
 	String txOficio
 	Date fhOficio
@@ -17,6 +17,8 @@ class T002TAutorizacion {
 	static belongsTo = [T004TCertificacion, T007CTpautorizacion, T011CSituacionaut]
 
 	static mapping = {
+		table 't002_t_autorizacion'
+		
 		id generator: "assigned"
 		version false
 	}

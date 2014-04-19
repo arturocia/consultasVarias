@@ -1,6 +1,6 @@
 package mx.amib.sistemas.autorizados.sumario
 
-class T001TSustenante {
+class Sustentante {
 
 	String nbNombre
 	String nbApaterno
@@ -15,6 +15,16 @@ class T001TSustenante {
 	static belongsTo = [T006CInstitucion]
 
 	static mapping = {
+		table 't001_t_sustenante'
+		
+		nbNombre column :'nb_nombre'
+		nbApaterno column :'nb_apaterno'
+		nbAmaterno column :'nb_amaterno'
+		nuMatricula column :'nu_matricula'
+		nuFolio column :'nu_folio'
+		fhCreacion column :'fh_creacion'
+		fhModificacion column :'fh_modificacion'
+		
 		id generator: "assigned"
 		version false
 	}
