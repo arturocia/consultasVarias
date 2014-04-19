@@ -36,7 +36,7 @@ class ConsultaAutorizados {
 		
 		fhCreacion column :'fh_creacion'
 		
-		id generator: "assigned"
+		//id generator: "assigned"
 		version false
 	}
 

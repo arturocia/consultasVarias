@@ -29,7 +29,7 @@ class Sustentante {
 		
 		institucion column : 'id_006_institucion'
 		
-		id generator: "assigned"
+		//id generator: "assigned"
 		version false
 	}
 

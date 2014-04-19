@@ -14,7 +14,7 @@ class SituacionAutorizacion {
 		stVigente column:'st_vigente'
 		
 		
-		id generator: "assigned"
+		//id generator: "assigned"
 		version false
 	}
 

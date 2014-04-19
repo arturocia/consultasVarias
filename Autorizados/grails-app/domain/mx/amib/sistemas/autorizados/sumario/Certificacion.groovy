@@ -29,7 +29,7 @@ class Certificacion {
 		sustenante column :'id_001_sustentante'
 		figura column :'id_013_figura'
 		
-		id generator: "assigned"
+		//id generator: "assigned"
 		version false
 	}
 

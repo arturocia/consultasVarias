@@ -16,7 +16,7 @@ class TipoPoder {
 		dsTppoder column:'ds_tppoder'
 		stVigente column:'st_vigente'
 		
-		id generator: "assigned"
+		//id generator: "assigned"
 		version false
 	}
 

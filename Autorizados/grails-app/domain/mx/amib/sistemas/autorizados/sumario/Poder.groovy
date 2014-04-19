@@ -23,7 +23,7 @@ class Poder {
 		tipoPoder column :'id_012_tppoder'
 		autorizacion column :'id_002_autorizacion'
 		
-		id generator: "assigned"
+		//id generator: "assigned"
 		version false
 	}
 

@@ -11,9 +11,9 @@ class Figura {
 		
 		table 't013_c_figura'
 		
-		dsFigura column:'ds_tpautorizacion'
+		dsFigura column:'ds_figura'
 		stVigente column:'st_vigente'
-		id generator: "assigned"
+		//id generator: "assigned"
 		version false
 	}
 

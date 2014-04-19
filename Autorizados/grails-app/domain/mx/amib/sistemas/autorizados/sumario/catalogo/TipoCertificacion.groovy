@@ -14,7 +14,7 @@ class TipoCertificacion {
 		dsTpcertificacion column:'ds_tpcertificacion'
 		stVigente column:'st_vigente'
 		
-		id generator: "assigned"
+		//id generator: "assigned"
 		version false
 	}
 

@@ -13,7 +13,7 @@ class Institucion {
 		nbInstitucion column:'nb_institucion'
 		stVigente column:'st_vigente'
 		
-		id generator: "assigned"
+		//id generator: "assigned"
 		version false
 	}
 

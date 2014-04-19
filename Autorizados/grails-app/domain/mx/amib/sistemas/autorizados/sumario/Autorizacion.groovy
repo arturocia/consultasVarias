@@ -36,7 +36,7 @@ class Autorizacion {
 		tipoCertificacion column :'id_004_certificacion'
 		situacionAutorizacion column :'id_011_situacionaut'
 		
-		id generator: "assigned"
+		//id generator: "assigned"
 		version false
 	}
 

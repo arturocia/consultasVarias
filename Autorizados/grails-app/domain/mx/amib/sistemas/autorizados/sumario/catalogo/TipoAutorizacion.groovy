@@ -13,7 +13,7 @@ class TipoAutorizacion {
 		table 't007_c_tpautorizacion'
 		dsTpautorizacion column:'ds_tpautorizacion'
 		stVigente column:'st_vigente'
-		id generator: "assigned"
+		//id generator: "assigned"
 		version false
 	}
 
