@@ -9,9 +9,9 @@ class Autorizacion {
 	String txCausarev
 	Date fhCreacion
 	Date fhModificacion
-	Tpautorizacion t007CTpautorizacion
-	Certificacion t004TCertificacion
-	Situacionaut t011CSituacionaut
+	Tpautorizacion tipoAutorizacion
+	Certificacion tipoCertificacion
+	Situacionaut situacionAutorizacion
 
 	static hasMany = [poderes: Poder]
 	static belongsTo = [Certificacion, Tpautorizacion,Situacionaut]
@@ -28,9 +28,9 @@ class Autorizacion {
 		fhCreacion column :'fh_creacion'
 		fhModificacion column :'fh_modificacion'
 		
-		t007CTpautorizacion column :'id_007_tpautorizacion'
-		t004TCertificacion column :'id_004_certificacion'
-		t011CSituacionaut column :'id_011_situacionaut'
+		tipoAutorizacion column :'id_007_tpautorizacion'
+		tipoCertificacion column :'id_004_certificacion'
+		situacionAutorizacion column :'id_011_situacionaut'
 		
 		id generator: "assigned"
 		version false

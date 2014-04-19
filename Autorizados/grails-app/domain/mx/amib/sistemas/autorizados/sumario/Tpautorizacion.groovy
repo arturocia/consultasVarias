@@ -5,7 +5,7 @@ class Tpautorizacion {
 	String dsTpautorizacion
 	Boolean stVigente
 
-	static hasMany = [Autorizacion: Autorizacion]
+	static hasMany = [autorizacion: Autorizacion]
 
 	static mapping = {
 		table 't007_c_tpautorizacion'

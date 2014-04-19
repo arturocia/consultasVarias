@@ -5,7 +5,7 @@ class Institucion {
 	String nbInstitucion
 	Boolean stVigente
 
-	static hasMany = [Sustenante: Sustentante]
+	static hasMany = [sustenante: Sustentante]
 
 	static mapping = {
 		

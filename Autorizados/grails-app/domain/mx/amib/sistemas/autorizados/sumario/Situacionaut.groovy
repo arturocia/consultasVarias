@@ -5,7 +5,7 @@ class Situacionaut {
 	String dsSituacionaut
 	Boolean stVigente
 
-	static hasMany = [Autorizacion: Autorizacion]
+	static hasMany = [autorizacion: Autorizacion]
 
 	static mapping = {
 		

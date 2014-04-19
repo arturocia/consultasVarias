@@ -5,7 +5,7 @@ class Figura {
 	String dsFigura
 	Boolean stVigente
 
-	static hasMany = [Certificacion: Certificacion]
+	static hasMany = [certificacion: Certificacion]
 
 	static mapping = {
 		

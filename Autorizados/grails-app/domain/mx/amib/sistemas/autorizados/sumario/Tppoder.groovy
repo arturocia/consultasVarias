@@ -5,7 +5,7 @@ class Tppoder {
 	String dsTppoder
 	Boolean stVigente
 
-	static hasMany = [Poder: Poder]
+	static hasMany = [poderes: Poder]
 
 	static mapping = {
 		
