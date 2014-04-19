@@ -89,3 +89,6 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+grails.plugin.reveng.defaultSchema='dbo'
+grails.plugin.reveng.excludeTables = ['t009_d_certpuntos', 't010_d_certexperiencia','dbamibsumautorizados.sys.check_constraints']
