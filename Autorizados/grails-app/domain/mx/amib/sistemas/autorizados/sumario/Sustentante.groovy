@@ -11,7 +11,7 @@ class Sustentante {
 	Date fhModificacion
 	T006CInstitucion t006CInstitucion
 
-	static hasMany = [t004TCertificacions: T004TCertificacion]
+	static hasMany = [certificaciones: Certificacion]
 	static belongsTo = [T006CInstitucion]
 
 	static mapping = {
@@ -24,6 +24,8 @@ class Sustentante {
 		nuFolio column :'nu_folio'
 		fhCreacion column :'fh_creacion'
 		fhModificacion column :'fh_modificacion'
+		
+		t006CInstitucion column : 'id_006_institucion'
 		
 		id generator: "assigned"
 		version false

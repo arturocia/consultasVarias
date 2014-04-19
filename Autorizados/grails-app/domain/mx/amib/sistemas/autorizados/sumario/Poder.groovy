@@ -1,17 +1,26 @@
 package mx.amib.sistemas.autorizados.sumario
 
-class T003TPoder {
+class Poder {
 
 	Integer nuNotario
 	Integer nuEscritura
 	Date fhCreacion
 	Date fhModificacion
 	T012CTppoder t012CTppoder
-	T002TAutorizacion t002TAutorizacion
+	Autorizacion t002TAutorizacion
 
-	static belongsTo = [T002TAutorizacion, T012CTppoder]
+	static belongsTo = [Autorizacion, T012CTppoder]
 
 	static mapping = {
+		table 't003_t_poder'
+		
+		nuNotario column :'nu_notario'
+		nuEscritura column :'nu_escritura'
+		fhCreacion column :'fh_creacion'
+		fhModificacion column :'fh_modificacion'
+		t012CTppoder column :'id_012_tppoder'
+		t002TAutorizacion column :'id_002_autorizacion'
+		
 		id generator: "assigned"
 		version false
 	}
