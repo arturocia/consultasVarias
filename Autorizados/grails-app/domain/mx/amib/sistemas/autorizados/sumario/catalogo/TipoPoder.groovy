@@ -11,7 +11,7 @@ class TipoPoder {
 
 	static mapping = {
 		
-		table 't012_c_ppoder'
+		table 't012_c_tpoder'
 		
 		dsTppoder column:'ds_tppoder'
 		stVigente column:'st_vigente'
