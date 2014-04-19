@@ -1,15 +1,17 @@
 package mx.amib.sistemas.autorizados.sumario
 
+import mx.amib.sistemas.autorizados.sumario.catalogo.TipoPoder;
+
 class Poder {
 
 	Integer nuNotario
 	Integer nuEscritura
 	Date fhCreacion
 	Date fhModificacion
-	Tppoder t012CTppoder
-	Autorizacion t002TAutorizacion
+	TipoPoder tipoPoder
+	Autorizacion autorizacion
 
-	static belongsTo = [Autorizacion, Tppoder]
+	static belongsTo = [Autorizacion, TipoPoder]
 
 	static mapping = {
 		table 't003_t_poder'
@@ -18,8 +20,8 @@ class Poder {
 		nuEscritura column :'nu_escritura'
 		fhCreacion column :'fh_creacion'
 		fhModificacion column :'fh_modificacion'
-		t012CTppoder column :'id_012_tppoder'
-		t002TAutorizacion column :'id_002_autorizacion'
+		tipoPoder column :'id_012_tppoder'
+		autorizacion column :'id_002_autorizacion'
 		
 		id generator: "assigned"
 		version false

@@ -1,11 +1,13 @@
-package mx.amib.sistemas.autorizados.sumario
+package mx.amib.sistemas.autorizados.sumario.catalogo
 
-class Tpcertificacion {
+import mx.amib.sistemas.autorizados.sumario.Certificacion;
+
+class TipoCertificacion {
 
 	String dsTpcertificacion
 	Boolean stVigente
 
-	static hasMany = [certificacion: Certificacion]
+	/*static hasMany = [certificacion: Certificacion]*/
 
 	static mapping = {
 		table 't008_c_tpcertificacion'

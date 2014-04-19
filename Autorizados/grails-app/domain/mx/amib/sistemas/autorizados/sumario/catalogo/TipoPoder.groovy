@@ -1,18 +1,20 @@
-package mx.amib.sistemas.autorizados.sumario
+package mx.amib.sistemas.autorizados.sumario.catalogo
 
-class Tppoder {
+import mx.amib.sistemas.autorizados.sumario.Poder;
+
+class TipoPoder {
 
 	String dsTppoder
 	Boolean stVigente
 
-	static hasMany = [poderes: Poder]
+	/*static hasMany = [poderes: Poder]*/
 
 	static mapping = {
 		
 		table 't012_c_ppoder'
 		
 		dsTppoder column:'ds_tppoder'
-		stVigemte column:'st_vigente'
+		stVigente column:'st_vigente'
 		
 		id generator: "assigned"
 		version false

@@ -1,17 +1,21 @@
 package mx.amib.sistemas.autorizados.sumario
 
+import mx.amib.sistemas.autorizados.sumario.catalogo.Figura;
+import mx.amib.sistemas.autorizados.sumario.catalogo.TipoCertificacion;
+
 class Certificacion {
 
 	Date fhInicio
 	Date fhFin
 	Date fhCreacion
 	Date fhModificacion
-	Tpcertificacion t008CTpcertificacion
+	
+	TipoCertificacion tipoCertificacion
 	Sustentante sustenante
-	Figura t013CFigura
+	Figura figura
 
 	static hasMany = [autorizaciones: Autorizacion]
-	static belongsTo = [Sustentante, Tpcertificacion, Figura]
+	static belongsTo = [Sustentante, TipoCertificacion, Figura]
 
 	static mapping = {
 		table 't001_t_sustenante'
@@ -21,9 +25,9 @@ class Certificacion {
 		fhCreacion column :'fh_creacion'
 		fhModificacion column :'fh_modificacion'
 		
-		t008CTpcertificacion column :'id_008_tpcertificacion'
+		tipoCertificacion column :'id_008_tpcertificacion'
 		sustenante column :'id_001_sustentante'
-		t013CFigura column :'id_013_figura'
+		figura column :'id_013_figura'
 		
 		id generator: "assigned"
 		version false

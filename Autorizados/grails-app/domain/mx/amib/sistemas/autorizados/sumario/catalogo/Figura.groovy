@@ -1,11 +1,11 @@
-package mx.amib.sistemas.autorizados.sumario
+package mx.amib.sistemas.autorizados.sumario.catalogo
 
 class Figura {
 
 	String dsFigura
 	Boolean stVigente
 
-	static hasMany = [certificacion: Certificacion]
+	/*static hasMany = [certificacion: Certificacion]*/
 
 	static mapping = {
 		

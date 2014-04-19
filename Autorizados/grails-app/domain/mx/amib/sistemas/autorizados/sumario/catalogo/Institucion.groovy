@@ -1,11 +1,11 @@
-package mx.amib.sistemas.autorizados.sumario
+package mx.amib.sistemas.autorizados.sumario.catalogo
 
 class Institucion {
 
 	String nbInstitucion
 	Boolean stVigente
 
-	static hasMany = [sustenante: Sustentante]
+	/*static hasMany = [sustenante: Sustentante]*/
 
 	static mapping = {
 		

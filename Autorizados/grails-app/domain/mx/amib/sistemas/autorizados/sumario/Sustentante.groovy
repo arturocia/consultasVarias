@@ -1,5 +1,7 @@
 package mx.amib.sistemas.autorizados.sumario
 
+import mx.amib.sistemas.autorizados.sumario.catalogo.Institucion;
+
 class Sustentante {
 
 	String nbNombre
@@ -9,7 +11,7 @@ class Sustentante {
 	Integer nuFolio
 	Date fhCreacion
 	Date fhModificacion
-	Institucion t006CInstitucion
+	Institucion institucion
 
 	static hasMany = [certificaciones: Certificacion]
 	static belongsTo = [Institucion]
@@ -25,7 +27,7 @@ class Sustentante {
 		fhCreacion column :'fh_creacion'
 		fhModificacion column :'fh_modificacion'
 		
-		t006CInstitucion column : 'id_006_institucion'
+		institucion column : 'id_006_institucion'
 		
 		id generator: "assigned"
 		version false

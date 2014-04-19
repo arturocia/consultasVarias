@@ -1,11 +1,11 @@
-package mx.amib.sistemas.autorizados.sumario
+package mx.amib.sistemas.autorizados.sumario.catalogo
 
-class Situacionaut {
+class SituacionAutorizacion {
 
 	String dsSituacionaut
 	Boolean stVigente
 
-	static hasMany = [autorizacion: Autorizacion]
+	/*static hasMany = [autorizacion: Autorizacion]*/
 
 	static mapping = {
 		

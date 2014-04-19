@@ -1,5 +1,8 @@
 package mx.amib.sistemas.autorizados.sumario
 
+import mx.amib.sistemas.autorizados.sumario.catalogo.SituacionAutorizacion;
+import mx.amib.sistemas.autorizados.sumario.catalogo.TipoAutorizacion;
+
 class Autorizacion {
 
 	String txOficio
@@ -9,12 +12,13 @@ class Autorizacion {
 	String txCausarev
 	Date fhCreacion
 	Date fhModificacion
-	Tpautorizacion tipoAutorizacion
+	
+	TipoAutorizacion tipoAutorizacion
 	Certificacion tipoCertificacion
-	Situacionaut situacionAutorizacion
+	SituacionAutorizacion situacionAutorizacion
 
 	static hasMany = [poderes: Poder]
-	static belongsTo = [Certificacion, Tpautorizacion,Situacionaut]
+	static belongsTo = [Certificacion, TipoAutorizacion, SituacionAutorizacion]
 
 	static mapping = {
 		table 't002_t_autorizacion'

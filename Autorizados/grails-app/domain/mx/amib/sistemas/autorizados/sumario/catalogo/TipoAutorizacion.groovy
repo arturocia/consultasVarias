@@ -1,11 +1,13 @@
-package mx.amib.sistemas.autorizados.sumario
+package mx.amib.sistemas.autorizados.sumario.catalogo
 
-class Tpautorizacion {
+import mx.amib.sistemas.autorizados.sumario.Autorizacion;
+
+class TipoAutorizacion {
 
 	String dsTpautorizacion
 	Boolean stVigente
 
-	static hasMany = [autorizacion: Autorizacion]
+	/*static hasMany = [autorizacion: Autorizacion]*/
 
 	static mapping = {
 		table 't007_c_tpautorizacion'
