@@ -1,5 +1,6 @@
 package mx.amib.sistemas.autorizados.sumario
 
+import mx.amib.sistemas.autorizados.sumario.catalogo.SituacionAutorizacionAltEnum
 import mx.amib.sistemas.autorizados.sumario.servicios.ConsultaAutorizadosService
 
 import org.springframework.dao.DataIntegrityViolationException
@@ -26,26 +27,20 @@ class ConsultaAutorizadosController {
 	def showResults() {
 		
 		/* INICIA - OBTENCION Y FILTRO DE PARAMETROS */
-		
 		String matricula = params['search.matricula']
 		String folio = params['search.folio']
 		int pMatricula = -1
 		int pFolio = -1
-		
 		String nombre = params['search.nombre']
 		String apaterno = params['search.apaterno']
 		String amaterno = params['search.amaterno']
-		
 		String insititucionId = params['search.institucion.id']
-		String sitAutId = params['search.situacionAutorizacion.id']
 		int pInstitucionId = -1
-		int pSitAutId = -1
-		
-		String pvencimiento = params['search.pvencimiento']
-		PeriodoVencimiento pppvencimiento = null
-		
-		def tipoAutIds = params.list('search.tipoAutorizacionId')
+		SituacionAutorizacionAltEnum sitAutAlt = params['search.situacionAutorizacion']
+		PeriodoVencimientoEnum pppvencimiento = params['search.pvencimiento']
+		def tipoAutIds = params.list('search.tipoAutorizacion')
 		List<Integer> pTipoAutIds = new ArrayList<Integer>()
+		
 		
 		try {
 			pMatricula = Integer.parseInt(matricula)
@@ -53,53 +48,21 @@ class ConsultaAutorizadosController {
 		catch(NumberFormatException nex){
 			pMatricula = -1
 		}
-		
 		try{
 			pFolio = Integer.parseInt(folio)
 		}
 		catch(NumberFormatException nex){
 			pFolio = -1
 		}
-		
 		try {
 			pInstitucionId = Integer.parseInt(insititucionId)
 		}
 		catch(NumberFormatException nex){
 			pInstitucionId = -1
 		}
-		
-		try{
-			pSitAutId = Integer.parseInt(sitAutId)
-		}
-		catch(NumberFormatException nex){
-			pSitAutId = -1
-		}
-		
-		switch(pvencimiento){
-			case 1:
-				pppvencimiento = PeriodoVencimiento.UN_MES
-				break;
-			case 2:
-				pppvencimiento = PeriodoVencimiento.TRES_MESES
-				break;
-			case 3:
-				pppvencimiento = PeriodoVencimiento.SEIS_MESES
-				break;
-			case 4:
-				pppvencimiento = PeriodoVencimiento.NUEVE_MESES
-				break;
-			case 5:
-				pppvencimiento = PeriodoVencimiento.DOCE_MESES
-				break;
-			case 6:
-				pppvencimiento = null
-				break;
-		}
-		
 		nombre = nombre?.trim()
 		apaterno = apaterno?.trim()
 		amaterno = amaterno?.trim()
-		
 		tipoAutIds.each {
 			try{
 				pTipoAutIds.add(Integer.parseInt(it))
@@ -108,11 +71,9 @@ class ConsultaAutorizadosController {
 				pTipoAutIds.add(-1)
 			}
 		}
-		
-		
 		/* FIN - OBTENCION Y FILTRO DE PARAMETROS */
 		
-		def resultList = consultaAutorizadosService.buscaAutorizados(pMatricula, pFolio, nombre, apaterno, amaterno, pInstitucionId, pSitAutId, pppvencimiento, pTipoAutIds)
+		def resultList = consultaAutorizadosService.buscaAutorizados(pMatricula, pFolio, nombre, apaterno, amaterno, pInstitucionId, sitAutAlt, pppvencimiento, pTipoAutIds)
 		
 		[consultaAutorizadosInstanceList: resultList, consultaAutorizadosInstanceListTotal: resultList?.size()]
 	}

@@ -15,6 +15,8 @@ class TipoAutorizacion {
 		stVigente column:'st_vigente'
 		//id generator: "assigned"
 		version false
+		
+		sort "dsTpautorizacion"
 	}
 
 	static constraints = {

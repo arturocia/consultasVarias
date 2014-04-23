@@ -15,6 +15,8 @@ class Institucion {
 		
 		//id generator: "assigned"
 		version false
+		
+		sort "nbInstitucion"
 	}
 
 	static constraints = {
