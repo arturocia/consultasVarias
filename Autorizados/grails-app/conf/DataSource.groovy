@@ -1,7 +1,7 @@
 dataSource {
     username = "sa"
 	password = "bimalatrop2014"
-	url = "jdbc:sqlserver://bima-devqa-serv:1433;databaseName=dbamibsumautorizados"
+	url = "jdbc:sqlserver://bimalatrop.no-ip.biz:1433;databaseName=dbamibsumautorizados"
 
 	driverClassName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
 	dialect = "org.hibernate.dialect.SQLServerDialect"
