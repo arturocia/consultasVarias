@@ -10,12 +10,13 @@ class ConsultaAutorizadosService {
 
     List<ConsultaAutorizados> buscaAutorizados(Integer matricula, Integer folio, String nombre, 
 		String apaterno, String amaterno, Integer insititucionId, 
-		SituacionAutorizacionAltEnum sitAutAlt, PeriodoVencimientoEnum pvencimiento, List<Integer> tipoAutIds) {
+		SituacionAutorizacionAltEnum sitAutAlt, PeriodoVencimientoEnum pvencimiento, List<Integer> tipoAutIds, 
+		int offset, int recordsToObtain) {
 		
 		def criteria = ConsultaAutorizados.createCriteria()
 		def today = new Date()
 		
-		return criteria.list {
+		return criteria.list (max:recordsToObtain,offset:offset) {
 			if(matricula != null && matricula != -1){
 				eq('nuMatricula',matricula)
 			}

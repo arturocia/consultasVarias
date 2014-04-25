@@ -41,6 +41,10 @@ class ConsultaAutorizadosController {
 		def tipoAutIds = params.list('search.tipoAutorizacion')
 		List<Integer> pTipoAutIds = new ArrayList<Integer>()
 		
+		String offset = params['offset']
+		int poffset
+		int resultsToDisplay = 10
+		
 		
 		try {
 			pMatricula = Integer.parseInt(matricula)
@@ -60,6 +64,12 @@ class ConsultaAutorizadosController {
 		catch(NumberFormatException nex){
 			pInstitucionId = -1
 		}
+		try {
+			poffset = Integer.parseInt(offset)
+		}
+		catch(NumberFormatException nex){
+			poffset = 0
+		}
 		nombre = nombre?.trim()
 		apaterno = apaterno?.trim()
 		amaterno = amaterno?.trim()
@@ -73,9 +83,13 @@ class ConsultaAutorizadosController {
 		}
 		/* FIN - OBTENCION Y FILTRO DE PARAMETROS */
 		
-		def resultList = consultaAutorizadosService.buscaAutorizados(pMatricula, pFolio, nombre, apaterno, amaterno, pInstitucionId, sitAutAlt, pppvencimiento, pTipoAutIds)
+		def resultList = consultaAutorizadosService.buscaAutorizados(pMatricula, pFolio, nombre, apaterno, amaterno, 
+																		pInstitucionId, sitAutAlt, pppvencimiento, 
+																		pTipoAutIds, poffset, resultsToDisplay)
 		
-		[consultaAutorizadosInstanceList: resultList, consultaAutorizadosInstanceListTotal: resultList?.size()]
+		[consultaAutorizadosInstanceList: resultList, consultaAutorizadosInstanceListTotal: resultList?.totalCount, 
+			consultaAutorizadosInstanceListOffset: offset, resultsToDisplay: resultsToDisplay, 
+			params: params ]
 	}
 	
 	/*def showJsonResults() {
