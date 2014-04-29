@@ -13,7 +13,7 @@ class Sustentante {
 	Date fhModificacion
 	Institucion institucion
 
-	static hasMany = [certificaciones: Certificacion]
+	static hasMany = [certificaciones: Certificacion, poderes: Poder]
 	static belongsTo = [Institucion]
 
 	static mapping = {

@@ -8,7 +8,7 @@ class Poder {
 	Date fhModificacion
 	Autorizacion autorizacion
 
-	static belongsTo = [Autorizacion]
+	static belongsTo = [Sustentante]
 
 	static mapping = {
 		table 't003_t_poder'
