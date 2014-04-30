@@ -13,7 +13,7 @@
 	
 	<fieldset>
 	<legend><strong>Parámetros de búsqueda</strong></legend>
-		Matrícula:&nbsp;<input type="text" name="search.matricula" />&nbsp;&nbsp;Folio:&nbsp;<input type="text" name="search.folio"/><br/>
+		Matrícula:&nbsp;<input type="text" name="search.matricula" pattern="^[0-9]+$"/>&nbsp;&nbsp;Folio:&nbsp;<input type="text" name="search.folio" pattern="^[0-9]+$"/><br/>
 		Nombre:&nbsp;<input type="text" name="search.nombre"/>&nbsp;&nbsp;A. Paterno:&nbsp;<input type="text" name="search.apaterno"/>&nbsp;&nbsp;A. Materno:&nbsp;<input type="text" name="search.amaterno" /><br/>
 		Institución:&nbsp;
 		<g:select id="selInstitucion" name="search.institucion.id" from="${mx.amib.sistemas.autorizados.sumario.catalogo.Institucion.findAllByStVigente(true)}" 

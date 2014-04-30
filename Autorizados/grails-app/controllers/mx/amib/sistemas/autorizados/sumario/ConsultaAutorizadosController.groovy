@@ -47,25 +47,25 @@ class ConsultaAutorizadosController {
 		
 		
 		try {
-			pMatricula = Integer.parseInt(matricula)
+			pMatricula = Integer.parseInt(matricula?.trim())
 		}
 		catch(NumberFormatException nex){
 			pMatricula = -1
 		}
 		try{
-			pFolio = Integer.parseInt(folio)
+			pFolio = Integer.parseInt(folio?.trim())
 		}
 		catch(NumberFormatException nex){
 			pFolio = -1
 		}
 		try {
-			pInstitucionId = Integer.parseInt(insititucionId)
+			pInstitucionId = Integer.parseInt(insititucionId?.trim())
 		}
 		catch(NumberFormatException nex){
 			pInstitucionId = -1
 		}
 		try {
-			poffset = Integer.parseInt(offset)
+			poffset = Integer.parseInt(offset?.trim())
 		}
 		catch(NumberFormatException nex){
 			poffset = 0
@@ -75,7 +75,7 @@ class ConsultaAutorizadosController {
 		amaterno = amaterno?.trim()
 		tipoAutIds.each {
 			try{
-				pTipoAutIds.add(Integer.parseInt(it))
+				pTipoAutIds.add(Integer.parseInt(it.trim()))
 			}
 			catch(NumberFormatException nex){
 				pTipoAutIds.add(-1)
