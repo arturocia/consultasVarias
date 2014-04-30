@@ -4,60 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 <meta name="layout"/>
 <title>Consulta de autorizados</title>
-<style>
-
-body {
-	font-family: Arial, Helvetica, sans-serif; 
-	font-size: small;
-}
-
-.content {
-	position: relative;
-	max-width: 940px;
-	background-color: #FFFFFF;
-	margin: auto;
-}
-
-.results {
-	font-size: small;
-}
-
-.result {
-	font-style: italic;
-}
-
-.content fieldset{
-	border-color: #CCC;
-	border-style: solid;
-	border-width: 1px;
-}
-
-.content .label{
-}
-.content .labelResult{
-	font-weight: bold; 
-	text-align: left; 
-}
-.content .result{
-}
-
-.prevLink {
-	font-weight: bold; 
-	padding-left: 3px;
-	padding-right: 6px;
-}
-.step {
-	font-weight: bold; 
-	padding-left: 4px;
-	padding-right: 4px;
-}
-.nextLink {
-	font-weight: bold; 
-	padding-left: 6px;
-	padding-right: 3px;
-}
-
-</style>
+<link rel="stylesheet" type="text/css" href="<g:resource dir="css" file="autorizados.css" />" />
 </head>
 <body>
   <div class="content">

@@ -91,12 +91,10 @@ class ConsultaAutorizadosController {
 			consultaAutorizadosInstanceListOffset: offset, resultsToDisplay: resultsToDisplay, 
 			params: params ]
 	}
-	
-	/*def showJsonResults() {
-		
-	}*/
 
+	/* Muestra el desgloze de certificaciones, autorizaciones y poderes de un sustentante  */
     def show(Long id) {
+		/*
         def consultaAutorizadosInstance = ConsultaAutorizados.get(id)
         if (!consultaAutorizadosInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'consultaAutorizados.label', default: 'ConsultaAutorizados'), id])
@@ -105,5 +103,6 @@ class ConsultaAutorizadosController {
         }
 
         [consultaAutorizadosInstance: consultaAutorizadosInstance]
+		*/
     }
 }

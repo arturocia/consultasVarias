@@ -17,7 +17,6 @@ class Autorizacion {
 	Certificacion tipoCertificacion
 	SituacionAutorizacion situacionAutorizacion
 
-	static hasMany = [poderes: Poder]
 	static belongsTo = [Certificacion, TipoAutorizacion, SituacionAutorizacion]
 
 	static mapping = {
