@@ -16,6 +16,7 @@ grails.project.dependency.resolution = {
     inherits("global") {
         // specify dependency exclusions here; for example, uncomment this to disable ehcache:
         // excludes 'ehcache'
+		excludes 'grails-plugin-log4j', 'log4j'
     }
     log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
@@ -36,12 +37,19 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+// http://stackoverflow.com/questions/13685084/grails-2-1-1-logback-integration/
+// http://grails.org/plugin/logback
+// http://grails.1312388.n4.nabble.com/Logback-Plugin-Cannot-resolve-dependency-td4640217.html
+		mavenRepo "http://repo.grails.org/grails/repo/"
+		mavenRepo "http://mvnrepository.com/artifact/"
     }
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         // runtime 'mysql:mysql-connector-java:5.1.22'
+		compile 'org.grails.plugins:logback:0.3.1'
+		runtime "de.huxhorn.lilith:de.huxhorn.lilith.logback.appender.multiplex-classic:0.9.42.1"
     }
 
     plugins {
