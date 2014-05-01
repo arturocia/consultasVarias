@@ -75,13 +75,17 @@ grails.hibernate.cache.queries = false
 environments {
 	development {
 		grails.logging.jul.usebridge = true
+		uploadFolder = "/tmp"
 	}
+
 	production {
 		grails.logging.jul.usebridge = false
+		uploadFolder = "/tmp"
 		// TODO: grails.serverURL = "http://www.changeme.com"
 	}
 }
 
+// http://stackoverflow.com/questions/11643872/any-good-tutorials-on-lilith-log-viewer-for-logback
 logback = {
 	appenders {
 		console name: 'stdout', encoder: pattern(pattern: '%c{2} %m%n')
@@ -98,12 +102,12 @@ logback = {
 	info 'org.codehaus.groovy.grails',
 			'org.springframework',
 			'net.sf.ehcache.hibernate'
-	debug "mx",
+	debug "grails.app.controllers",
 			'org.hibernate'
 
-	info mylog: 'grails.app'
+//	info mylog: 'grails.app.controllers'
 
-	root { warn 'stdout', 'multiplex' }
+	root { debug 'stdout', 'multiplex' }
 }
 
 grails.plugin.reveng.defaultSchema='dbo'
