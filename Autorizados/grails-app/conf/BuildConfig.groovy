@@ -42,6 +42,9 @@ grails.project.dependency.resolution = {
 // http://grails.1312388.n4.nabble.com/Logback-Plugin-Cannot-resolve-dependency-td4640217.html
 		mavenRepo "http://repo.grails.org/grails/repo/"
 		mavenRepo "http://mvnrepository.com/artifact/"
+		mavenRepo "http://repo.grails.org/grails/libs-releases/"
+		mavenRepo "http://m2repo.spockframework.org/ext/"
+		mavenRepo "http://m2repo.spockframework.org/snapshots/"
     }
 
     dependencies {
@@ -69,5 +72,7 @@ grails.project.dependency.resolution = {
         compile ':cache:1.0.1'
 		
 		runtime ':db-reverse-engineer:0.5'
+		compile ":excel-import:1.0.0"
+		compile ":joda-time:1.4"
     }
 }

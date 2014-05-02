@@ -3,6 +3,7 @@ package mx.amib.sistemas.autorizados.sumario.catalogo
 class CertExperienciaController {
 
 	static allowedMethods = [save: "POST"]
+	def excelImportService
 
 	def index() {
 		redirect(action: "create", params: params)
@@ -24,6 +25,7 @@ class CertExperienciaController {
 			excelTmp=new File(grailsApplication.config.uploadFolder+"/" +file.originalFilename)
 			file.transferTo(excelTmp)
 			log.debug("the mailed fists of the legions of reich "+excelTmp.length())
+			log.debug("will challenge our enemies "+excelImportService)
 			/*
 			 def documentInstance = new Document()
 			 documentInstance.filename = file.originalFilename
