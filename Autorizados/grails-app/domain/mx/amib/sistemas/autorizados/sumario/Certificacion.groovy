@@ -13,12 +13,12 @@ class Certificacion {
 	TipoCertificacion tipoCertificacion
 	Sustentante sustenante
 	Figura figura
-
+	
 	static hasMany = [autorizaciones: Autorizacion]
 	static belongsTo = [Sustentante, TipoCertificacion, Figura]
 
 	static mapping = {
-		table 't001_t_sustenante'
+		table 't004_t_certificacion'
 		
 		fhInicio column :'fh_inicio'
 		fhFin column :'fh_fin'
@@ -31,6 +31,8 @@ class Certificacion {
 		
 		//id generator: "assigned"
 		version false
+		
+		sort figura:"asc"
 	}
 
 	static constraints = {

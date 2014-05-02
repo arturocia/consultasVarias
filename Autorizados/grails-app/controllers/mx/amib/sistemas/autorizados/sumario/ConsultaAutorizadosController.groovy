@@ -94,6 +94,11 @@ class ConsultaAutorizadosController {
 
 	/* Muestra el desgloze de certificaciones, autorizaciones y poderes de un sustentante  */
     def show(Long id) {
+		
+		def sustentante = consultaAutorizadosService.obtenerDatosExpendientePorMatricula(id)
+		def today = new Date()
+		
+		[sustentanteInstance: sustentante, todayDate : today]
 		/*
         def consultaAutorizadosInstance = ConsultaAutorizados.get(id)
         if (!consultaAutorizadosInstance) {
