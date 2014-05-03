@@ -12,7 +12,7 @@ class Sustentante {
 	Date fhCreacion
 	Date fhModificacion
 	Institucion institucion
-
+	
 	static hasMany = [certificaciones: Certificacion, poderes: Poder]
 	static belongsTo = [Institucion]
 
@@ -31,6 +31,8 @@ class Sustentante {
 		
 		//id generator: "assigned"
 		version false
+		
+		certificaciones sort:'fhFin', order:'asc'
 	}
 
 	static constraints = {

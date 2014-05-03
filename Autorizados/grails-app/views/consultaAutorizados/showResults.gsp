@@ -5,6 +5,13 @@
 <meta name="layout"/>
 <title>Consulta de autorizados</title>
 <link rel="stylesheet" type="text/css" href="<g:resource dir="css" file="autorizados.css" />" />
+<script>
+
+function trResult_click(idSust){
+	document.location.href = '<g:createLink controller="consultaAutorizados" action="show" />/' + idSust;
+}
+
+</script>
 </head>
 <body>
   <div class="content">
@@ -14,7 +21,7 @@
   		<g:paginate next="Siguente" prev="Atras" controller="consultaAutorizados"
             action="showResults" max="${resultsToDisplay}" total="${consultaAutorizadosInstanceListTotal}" params="${params}"/><br/>
   		
-  		<table class="results">
+  		<table class="results" cellspacing="0" >
   			<tr>
   				<th>Nombre</th>
   				<th>A. Paterno</th>
@@ -26,7 +33,7 @@
   			</tr>
   			
   			<g:each status="i" in="${consultaAutorizadosInstanceList}" var="item" >
-	  			<tr>
+	  			<tr class="resultRow" onclick="trResult_click(${item.nuMatricula})">
 	  				<td>${item.nbNombre?.encodeAsHTML()}</td>
 	  				<td>${item.nbApaterno?.encodeAsHTML()}</td>
 	  				<td>${item.nbAmaterno?.encodeAsHTML()}</td>

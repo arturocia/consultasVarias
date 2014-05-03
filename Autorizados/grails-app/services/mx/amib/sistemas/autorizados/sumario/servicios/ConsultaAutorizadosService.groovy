@@ -1,5 +1,6 @@
 package mx.amib.sistemas.autorizados.sumario.servicios
 
+import mx.amib.sistemas.autorizados.sumario.Sustentante
 import mx.amib.sistemas.autorizados.sumario.ConsultaAutorizados
 import mx.amib.sistemas.autorizados.sumario.PeriodoVencimientoEnum
 import mx.amib.sistemas.autorizados.sumario.catalogo.Institucion
@@ -89,5 +90,9 @@ class ConsultaAutorizadosService {
 		
 	List<Institucion> listaInstitucionesVigentes(){
 		return Institucion.findAllByStVigente(true, sort:"nbInstitucion")
+	}
+	
+	def obtenerDatosExpendientePorMatricula(long matricula){
+		return Sustentante.findByNuMatricula(matricula)
 	}
 }

@@ -12,11 +12,28 @@ body {
 
 .results {
 	font-size: small;
+	border: none;
+	border-collapse:collapse;
 }
 
 .result {
 	font-style: italic;
 }
+
+.resultRow:hover {
+	background-color:#EEEEFF;
+	cursor:pointer;
+}
+
+.detailResultTable {
+	text-align: center;
+}
+
+.detailResultRow:hover {
+	background-color:#EEEEFF;
+}
+
+
 
 .content fieldset{
 	border-color: #CCC;
