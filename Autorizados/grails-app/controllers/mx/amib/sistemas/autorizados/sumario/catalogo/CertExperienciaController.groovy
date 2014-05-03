@@ -3,7 +3,8 @@ package mx.amib.sistemas.autorizados.sumario.catalogo
 class CertExperienciaController {
 
 	static allowedMethods = [save: "POST"]
-	def excelImportService
+	def bookExcelImporterService
+	def certExperienciaService
 
 	def index() {
 		redirect(action: "create", params: params)
@@ -24,8 +25,16 @@ class CertExperienciaController {
 			log.debug("with the trinph of our race  "+file.originalFilename)
 			excelTmp=new File(grailsApplication.config.uploadFolder+"/" +file.originalFilename)
 			file.transferTo(excelTmp)
-			log.debug("the mailed fists of the legions of reich "+excelTmp.length())
-			log.debug("will challenge our enemies "+excelImportService)
+			log.debug("the mailed fists of the legions of reich "+excelTmp.canRead())
+
+			bookExcelImporterService.read(excelTmp.absolutePath)
+			log.debug("and if the jackals will not surrender D6")
+
+			def celdas=bookExcelImporterService.celdas
+			log.debug("we will take it by force!")
+			certExperienciaService.guardaExcel(celdas)
+			log.debug("heil reich!")
+
 			/*
 			 def documentInstance = new Document()
 			 documentInstance.filename = file.originalFilename

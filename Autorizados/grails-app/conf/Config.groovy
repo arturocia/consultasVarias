@@ -103,7 +103,8 @@ logback = {
 			'org.springframework',
 			'net.sf.ehcache.hibernate'
 	debug "grails.app.controllers",
-			'org.hibernate'
+			'org.hibernate',
+			"org.grails.plugins.excelimport"
 
 //	info mylog: 'grails.app.controllers'
 
