@@ -11,10 +11,12 @@ class CertExperienciaService {
 	static transactional = true
 
 	def guardaExcel(mapaCeldas) {
+		Boolean guardaCertExperiencia=true
 		Integer contador=0
 		String columnasAInsertarStr=null
 		String placeHoldersStr=null
 		String queryStr=null
+		String nombreTablon=""
 		Set<String> listaColumnas=null
 		List<String> valores=null
 		def sql = new Sql(dataSource)
@@ -26,22 +28,45 @@ class CertExperienciaService {
 		//		mapaCeldasFiltrado << mapaCeldas
 		//		mapaCeldasFiltrado.remove("nombreCompleto")
 		mapaCeldas[0].remove("nombreCompleto")
+		mapaCeldas[0].remove("tx_opcion8")
+		mapaCeldas[0].remove("tx_instituto8")
+		for (i in 1..8) {
+			log.debug("removing trash ${i}")
+			mapaCeldas[0].remove("evento"+i)
+			mapaCeldas[0].remove("puntos"+i)
+		}
 		listaColumnas=mapaCeldas[0].keySet()
+		guardaCertExperiencia=listaColumnas.size()==14
+		log.debug("Se guardara ceerte experiencia? ${guardaCertExperiencia}")
 		columnasAInsertarStr=listaColumnas.join(",")
 		// XXX: http://groovy.codehaus.org/Operators#Operators-SpreadOperator(*.)
 		placeHoldersStr="?,"*(listaColumnas.size()-1)
 		placeHoldersStr+="?"
-		queryStr="insert into t010_d_certexperiencia (${columnasAInsertarStr})  values (${placeHoldersStr})"
+		if(guardaCertExperiencia){
+			nombreTablon="t010_d_certexperiencia"
+		}
+		else{
+			nombreTablon="t009_d_certpuntos"
+
+		}
+		// XXX: http://www.danvega.org/blog/2013/8/21/Writing-SQL-in-a-Grails-Application
+		queryStr="insert into ${nombreTablon} (${columnasAInsertarStr})  values (${placeHoldersStr})"
 		log.debug("el liston de tus pelos ${columnasAInsertarStr}")
 		log.debug("Venga la sentencia ${queryStr}")
 		try{
 			for (mapaCelda in mapaCeldas) {
 				mapaCelda.remove("nombreCompleto")
+				mapaCelda.remove("tx_opcion8")
+				mapaCelda.remove("tx_instituto8")
+				for (i in 1..8) {
+					mapaCelda.remove("evento"+i)
+					mapaCelda.remove("puntos"+i)
+				}
 				// XXX: http://webpages.charter.net/weiqigao/2006/12/07/you_wont_believe_this_but_the_arrow_operator_is_coming_to_java_7.html
 				// XXX: http://stackoverflow.com/questions/4560546/how-do-i-round-a-number-in-groovy
 				valores=mapaCelda.values().toList().collect{valor -> return valor in Double?new DecimalFormat("#").format(valor):valor}*.toString()
-//				mapaCelda.values().toList().collect{valor -> log.debug("el tipo de ${valor} es "+valor.class)}
-//				log.debug("valores ${valores}")
+				//				mapaCelda.values().toList().collect{valor -> log.debug("el tipo de ${valor} es "+valor.class)}
+				//				log.debug("valores ${valores}")
 				log.debug("en la insercion ${contador}")
 				sql.execute(queryStr,valores)
 				contador++
@@ -63,3 +88,4 @@ class CertExperienciaService {
 		return true
 	}
 }
+
