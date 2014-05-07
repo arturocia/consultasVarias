@@ -98,13 +98,14 @@ logback = {
 		c4c4.reconnectionDelay=10000
 		appender c4c4
 	}
-
-	info 'org.codehaus.groovy.grails',
+	
+	error "grails.app.services.org.grails.plugins.excelimport"
+	debug 'org.codehaus.groovy.grails',
 			'org.springframework',
 			'net.sf.ehcache.hibernate'
+			
 	debug "grails.app.controllers",
-			'org.hibernate',
-			"org.grails.plugins.excelimport"
+			'org.hibernate'
 
 //	info mylog: 'grails.app.controllers'
 

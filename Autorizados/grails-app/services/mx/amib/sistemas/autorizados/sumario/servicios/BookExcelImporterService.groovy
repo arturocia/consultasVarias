@@ -160,7 +160,7 @@ class BookExcelImporterService extends AbstractExcelImporter {
 				]]
 		}
 		celdas=excelImportService.columns(workbook, mapaConf)
-		log.debug("las celdas resultado "+celdas)
+		log.debug("las celdas resultado "+celdas[0])
 		celdas
 	}
 }
