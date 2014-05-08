@@ -12,13 +12,11 @@ class CertExperienciaService {
 
 	def guardaExcel(mapaCeldas) {
 		Boolean guardaCertExperiencia=true
-		Integer contador=0
 		String columnasAInsertarStr=null
 		String placeHoldersStr=null
 		String queryStr=null
 		String nombreTablon=""
 		Set<String> listaColumnas=null
-		List<String> valores=null
 		def sql = new Sql(dataSource)
 		//		def mapaCeldasFiltrado=[:]
 
@@ -54,23 +52,32 @@ class CertExperienciaService {
 		log.debug("el liston de tus pelos ${columnasAInsertarStr}")
 		log.debug("Venga la sentencia ${queryStr}")
 		try{
-			for (mapaCelda in mapaCeldas) {
-				mapaCelda.remove("nombreCompleto")
-				mapaCelda.remove("tx_opcion8")
-				mapaCelda.remove("tx_instituto8")
-				for (i in 1..8) {
-					mapaCelda.remove("evento"+i)
-					mapaCelda.remove("puntos"+i)
-				}
-				// XXX: http://webpages.charter.net/weiqigao/2006/12/07/you_wont_believe_this_but_the_arrow_operator_is_coming_to_java_7.html
-				// XXX: http://stackoverflow.com/questions/4560546/how-do-i-round-a-number-in-groovy
-				valores=mapaCelda.values().toList().collect{valor -> return valor in Double?new DecimalFormat("#").format(valor):valor}*.toString()
-				//				mapaCelda.values().toList().collect{valor -> log.debug("el tipo de ${valor} es "+valor.class)}
-				//				log.debug("valores ${valores}")
-				log.debug("en la insercion ${contador}")
-				sql.execute(queryStr,valores)
-				contador++
-			}
+			sql.withBatch(100,
+					queryStr){ ps ->
+
+						Integer contador=0
+						List<String> valores=null
+
+						for (mapaCelda in mapaCeldas) {
+							mapaCelda.remove("nombreCompleto")
+							mapaCelda.remove("tx_opcion8")
+							mapaCelda.remove("tx_instituto8")
+							for (i in 1..8) {
+								mapaCelda.remove("evento"+i)
+								mapaCelda.remove("puntos"+i)
+							}
+							// XXX: http://webpages.charter.net/weiqigao/2006/12/07/you_wont_believe_this_but_the_arrow_operator_is_coming_to_java_7.html
+							// XXX: http://stackoverflow.com/questions/4560546/how-do-i-round-a-number-in-groovy
+							//							mapaCelda.values().toList().collect{valor -> valor?log.debug("el tipo de ${valor} es "+valor.class):log.debug("valor mulo!")}
+							valores=mapaCelda.values().toList().collect{valor ->
+								return valor? valor in Double?new DecimalFormat("#").format(valor):valor :"NA"}*.toString()
+							//							valores.collect{valor -> valor?log.debug("el tipo convertido de ${valor} es "+valor.class):log.debug("valor mulo!")}
+							//							log.debug("valores ${valores}")
+							log.debug("en la insercion ${contador}")
+							ps.addBatch(valores)
+							contador++
+						}
+					}
 		}
 		catch(SQLException sqle){
 			// XXX: http://stackoverflow.com/questions/17684734/the-conversion-from-unknown-to-unknown-is-unsupported
