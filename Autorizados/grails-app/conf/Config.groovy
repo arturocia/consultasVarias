@@ -15,25 +15,38 @@ grails.project.groupId = appName // change this to alter the default package nam
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
 grails.mime.types = [
-    all:           '*/*',
-    atom:          'application/atom+xml',
-    css:           'text/css',
-    csv:           'text/csv',
-    form:          'application/x-www-form-urlencoded',
-    html:          ['text/html','application/xhtml+xml'],
-    js:            'text/javascript',
-    json:          ['application/json', 'text/json'],
-    multipartForm: 'multipart/form-data',
-    rss:           'application/rss+xml',
-    text:          'text/plain',
-    xml:           ['text/xml', 'application/xml']
+	all:           '*/*',
+	atom:          'application/atom+xml',
+	css:           'text/css',
+	csv:           'text/csv',
+	form:          'application/x-www-form-urlencoded',
+	html:          [
+		'text/html',
+		'application/xhtml+xml'
+	],
+	js:            'text/javascript',
+	json:          [
+		'application/json',
+		'text/json'
+	],
+	multipartForm: 'multipart/form-data',
+	rss:           'application/rss+xml',
+	text:          'text/plain',
+	xml:           [
+		'text/xml',
+		'application/xml']
 ]
 
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
 
 // What URL patterns should be processed by the resources plugin
-grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
+grails.resources.adhoc.patterns = [
+	'/images/*',
+	'/css/*',
+	'/js/*',
+	'/plugins/*'
+]
 
 // The default codec used to encode data with ${}
 grails.views.default.codec = "none" // none, html, base64
@@ -60,35 +73,48 @@ grails.exceptionresolver.params.exclude = ['password']
 grails.hibernate.cache.queries = false
 
 environments {
-    development {
-        grails.logging.jul.usebridge = true
-    }
-    production {
-        grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
-    }
+	development {
+		grails.logging.jul.usebridge = true
+		uploadFolder = "/tmp"
+	}
+
+	production {
+		grails.logging.jul.usebridge = false
+		uploadFolder = "/tmp"
+		// TODO: grails.serverURL = "http://www.changeme.com"
+	}
 }
 
-// log4j configuration
-log4j = {
-    // Example of changing the log pattern for the default console appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+// http://stackoverflow.com/questions/11643872/any-good-tutorials-on-lilith-log-viewer-for-logback
+logback = {
+	appenders {
+		console name: 'stdout', encoder: pattern(pattern: '%c{2} %m%n')
+		file name: 'mylog', file: '/tmp/my.log'
+		def c4c4=new de.huxhorn.lilith.logback.appender.ClassicMultiplexSocketAppender(false)
+		c4c4.setIncludeCallerData(true)
+		c4c4.setRemoteHosts("localhost")
+		c4c4.setName("multiplex")
+		c4c4.context = context
+		c4c4.reconnectionDelay=10000
+		appender c4c4
+	}
+	
+	error "grails.app.services.org.grails.plugins.excelimport"
+	debug 'org.codehaus.groovy.grails',
+			'org.springframework',
+			'net.sf.ehcache.hibernate'
+			
+	debug "grails.app.controllers",
+			'org.hibernate'
 
-    error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-           'org.codehaus.groovy.grails.web.pages',          // GSP
-           'org.codehaus.groovy.grails.web.sitemesh',       // layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
-           'org.codehaus.groovy.grails.commons',            // core / classloading
-           'org.codehaus.groovy.grails.plugins',            // plugins
-           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
+//	info mylog: 'grails.app.controllers'
+
+	root { debug 'stdout', 'multiplex' }
 }
 
 grails.plugin.reveng.defaultSchema='dbo'
-grails.plugin.reveng.excludeTables = ['t009_d_certpuntos', 't010_d_certexperiencia','dbamibsumautorizados.sys.check_constraints']
+grails.plugin.reveng.excludeTables = [
+	't009_d_certpuntos',
+	't010_d_certexperiencia',
+	'dbamibsumautorizados.sys.check_constraints'
+]
