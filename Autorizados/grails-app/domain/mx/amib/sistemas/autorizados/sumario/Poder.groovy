@@ -1,13 +1,18 @@
 package mx.amib.sistemas.autorizados.sumario
 
+import mx.amib.sistemas.autorizados.sumario.catalogo.Institucion
+
 class Poder {
 
 	Integer nuNotario
-	Integer nuEscritura
+	String nuEscritura
+	String txTppoder
 	Date fhCreacion
 	Date fhModificacion
-	Autorizacion autorizacion
-
+	Institucion institucion
+	
+	Sustentante sustentante
+	
 	static belongsTo = [Sustentante]
 
 	static mapping = {
@@ -15,10 +20,12 @@ class Poder {
 		
 		nuNotario column :'nu_notario'
 		nuEscritura column :'nu_escritura'
+		txTppoder column :'tx_tppoder'
 		fhCreacion column :'fh_creacion'
 		fhModificacion column :'fh_modificacion'
-		autorizacion column :'id_002_autorizacion'
+		institucion column :'id_006_institucion'
 		
+		sustentante column :'id_001_sustentante'
 		//id generator: "assigned"
 		version false
 	}

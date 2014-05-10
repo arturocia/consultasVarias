@@ -98,6 +98,37 @@
 			<br/>
 			<fieldset>
 				<legend><strong>Datos del poder</strong></legend>
+				<g:if test="${sustentanteInstance?.poderes == null || sustentanteInstance?.poderes.size() == 0}">
+					Falta por entregar el poder especial que debe otorgarse a los Operadores de Bolsa y Apoderados por lo que de conformidad con el artículo 6 de las "Disposiciones Generales aplicables a los Organismos Autorregulatorios Reconocidos por la Comisión Nacional Bancaria y de Valores", la autorización surtirá plenos efectos a partir de la fecha en que éste se haya formalizado.	
+				</g:if>
+				<g:else>
+					<table class="detailResultTable" style="width: 100%">
+						<tr>
+							<th>
+							No. de notario
+							</th>
+							<th>
+							No. de escritura
+							</th>
+							<th>
+							Tipo de Poder
+							</th>
+							<th>
+							Institución
+							</th>
+						</tr>
+						
+						<g:each status="i" in="${sustentanteInstance?.poderes}" var="item" >
+							<tr>
+								<td>${item.nuNotario}</td>
+								<td>${item.nuEscritura}</td>
+								<td>${item.txTppoder}</td>
+								<td>${item.institucion?.nbInstitucion}</td>
+							</tr>
+						</g:each>
+						
+					</table>
+				</g:else>
 			</fieldset>
 			<br/>
 			<fieldset>
