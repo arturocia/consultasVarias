@@ -15,6 +15,7 @@ class CertExperienciaService {
 		String columnasAInsertarStr=null
 		String placeHoldersStr=null
 		String queryStr=null
+		String queryStrExecProd=null
 		String nombreTablon=""
 		Set<String> listaColumnas=null
 		def sql = new Sql(dataSource)
@@ -49,6 +50,7 @@ class CertExperienciaService {
 		}
 		// XXX: http://www.danvega.org/blog/2013/8/21/Writing-SQL-in-a-Grails-Application
 		queryStr="insert into ${nombreTablon} (${columnasAInsertarStr})  values (${placeHoldersStr})"
+		queryStrExecProd="{call sp004_incorporaImportadosPorPuntos}"
 		log.debug("el liston de tus pelos ${columnasAInsertarStr}")
 		log.debug("Venga la sentencia ${queryStr}")
 		try{
@@ -78,6 +80,7 @@ class CertExperienciaService {
 							contador++
 						}
 					}
+			sql.call(queryStrExecProd)
 		}
 		catch(SQLException sqle){
 			// XXX: http://stackoverflow.com/questions/17684734/the-conversion-from-unknown-to-unknown-is-unsupported
