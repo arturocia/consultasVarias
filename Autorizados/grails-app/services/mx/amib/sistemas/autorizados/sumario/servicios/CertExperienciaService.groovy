@@ -14,9 +14,11 @@ class CertExperienciaService {
 		Boolean guardaCertExperiencia=true
 		String columnasAInsertarStr=null
 		String placeHoldersStr=null
+		String queryStrDelete=null
 		String queryStr=null
 		String queryStrExecProd=null
 		String nombreTablon=""
+		String nombreSp=""
 		Set<String> listaColumnas=null
 		def sql = new Sql(dataSource)
 		//		def mapaCeldasFiltrado=[:]
@@ -43,17 +45,20 @@ class CertExperienciaService {
 		placeHoldersStr+="?"
 		if(guardaCertExperiencia){
 			nombreTablon="t010_d_certexperiencia"
+			nombreSp="sp005_incorporaImportadosPorExperiencia"
 		}
 		else{
 			nombreTablon="t009_d_certpuntos"
-
+			nombreSp="sp004_incorporaImportadosPorPuntos"
 		}
 		// XXX: http://www.danvega.org/blog/2013/8/21/Writing-SQL-in-a-Grails-Application
+		queryStrDelete="delete from ${nombreTablon}"
 		queryStr="insert into ${nombreTablon} (${columnasAInsertarStr})  values (${placeHoldersStr})"
-		queryStrExecProd="{call sp004_incorporaImportadosPorPuntos}"
+		queryStrExecProd="{call ${nombreSp}}"
 		log.debug("el liston de tus pelos ${columnasAInsertarStr}")
 		log.debug("Venga la sentencia ${queryStr}")
 		try{
+			sql.execute(queryStrDelete)
 			sql.withBatch(100,
 					queryStr){ ps ->
 
