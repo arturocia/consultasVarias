@@ -93,20 +93,37 @@ class BookExcelImporterService extends AbstractExcelImporter {
 		if(abreCertExperiencia){
 			mapaConf=["sheet":nombreHoja,startRow: 1,columnMap:  [
 					'A':'tx_matricula',
-					'B':'tx_fhfinvigant',
+					'B':'tx_nombre',
 					'C':'tx_apaterno',
 					'D':'tx_amaterno',
-					'E':'tx_nombre',
+					'E':'tx_idfiguracert',
 					'F':'tx_figura',
 					'G':'tx_fhiniciovigant',
-					'H':'tx_institucion',
-					'I':'tx_tipoinstitucion',
-					'J':'tx_idfiguracert',
+					'H':'tx_fhfinvigant',
+					'I':'tx_fhiniciovignva',
+					'J':'tx_fhfinvignva',
 					'K':'tx_fhemisioncarta',
-					'L':'tx_fhiniciovignva',
-					'M':'tx_fhfinvignva',
-					'N':'tx_estatus',
-					'O':'nombreCompleto',
+					'L':'tx_fhrecepcion',
+					'M':'tx_institucion',
+					'N':'tx_tipoinstitucion',
+					'O':'tx_estatus'
+					/*
+					 * [tx_matricula]
+				      ,[tx_nombre]
+				      ,[tx_apaterno]
+				      ,[tx_amaterno]
+				      ,[tx_idfiguracert]
+				      ,[tx_figura]
+				      ,[tx_fhiniciovigant]
+				      ,[tx_fhfinvigant]
+				      ,[tx_fhiniciovignva]
+				      ,[tx_fhfinvignva]
+				      ,[tx_fhemisioncarta]
+				      ,[tx_fhrecepcion]
+				      ,[tx_institucion]
+				      ,[tx_tipoinstitucion]
+				      ,[tx_estatus]
+					 */
 				]]
 		}
 		else{

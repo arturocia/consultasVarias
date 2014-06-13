@@ -37,7 +37,7 @@ class CertExperienciaService {
 			mapaCeldas[0].remove("puntos"+i)
 		}
 		listaColumnas=mapaCeldas[0].keySet()
-		guardaCertExperiencia=listaColumnas.size()==14
+		guardaCertExperiencia=listaColumnas.size()==15
 		log.debug("Se guardara ceerte experiencia? ${guardaCertExperiencia}")
 		columnasAInsertarStr=listaColumnas.join(",")
 		// XXX: http://groovy.codehaus.org/Operators#Operators-SpreadOperator(*.)
