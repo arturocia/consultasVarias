@@ -126,7 +126,7 @@ class BookExcelImporterService extends AbstractExcelImporter {
 					 */
 				]]
 		}
-		else{
+		else if (abreCertPuntos){
 			mapaConf=["sheet":nombreHoja,startRow: 1,columnMap:  [
 					'A':'tx_matricula',
 					'B':'tx_nombre',
@@ -175,6 +175,22 @@ class BookExcelImporterService extends AbstractExcelImporter {
 					'AO':'puntos8',
 					'AP':'evento8'
 				]]
+		}
+		
+		else{
+			mapaConf=["sheet":nombreHoja,startRow: 1,columnMap:[
+				'A':'tx_matricula',
+				'B':'tx_nombre',
+				'C':'tx_apaterno',
+				'D':'tx_amaterno',
+				'E':'tx_tipoinstitucion',
+				'F':'tx_figura',
+				'G':'tx_resultado',
+				'H':'tx_fhiniciovigant',
+				'I':'tx_fhfinvigant',
+				'J':'tx_modalidad'
+			]]
+			
 		}
 		celdas=excelImportService.columns(workbook, mapaConf)
 		log.debug("las celdas resultado "+celdas[0])
