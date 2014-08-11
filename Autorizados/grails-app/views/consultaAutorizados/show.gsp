@@ -5,36 +5,9 @@
 	<head>
 		<meta name="layout" >
 		<link rel="stylesheet" type="text/css" href="<g:resource dir="css" file="autorizados.css" />" />
-		<script src="<g:resource dir="js" file="jquery-1.11.1.min.js" />"></script>
-		<style type="text/css">
-		.regresar {
-			background-image: url(<g:resource dir="images" file="regresarSolIcon.png" />);
-			background-repeat: no-repeat;
-			background-position: left;
-			
-			padding-top: 2px;
-			padding-bottom: 2px;
-			padding-left: 24px;
-			
-			/*font-style: italic;*/
-			
-			border-width: 1px; 
-			border-color:#cccccc;
-		}
-		</style>
 	</head>
-	
 	<body>
-		<div class="content">
-			<!-- INICIA: WIDGET DE TOOLBAR -->
-			<div class="widgetToolbar" >
-				<input id="btnRegresar" type="button" class="regresar" value="Regresar" ></input>
-				
-				<!-- <input id="btnCompletaPersonales" type="button" class="completa" value="Modificar datos personales" ></input> -->
-				<!-- <input id="btnCompleta" type="button" class="completa" value="Modificar solicitud" ></input> -->
-			<!-- <input id="btnEnvia" type="button" class="envia" value="Envíar a institución" ></input> -->
-			</div>
-			<!-- FIN: WIDGET DE TOOLBAR -->	
+		<div class="content">		
 			<fieldset>
 				<legend><strong>Datos generales</strong></legend>
 					<table>
@@ -201,13 +174,6 @@
 		  			</g:each>
 		  		</table>
 			</fieldset>
-		</div>
-		<!-- INICIA: SCRIPTS ESPECIFICOS DE VISTA -->
-		<script type="text/javascript">
-		$("#btnRegresar").click( function(  ){
-			history.back();
-		});
-		</script>
-		<!-- FIN: SCRIPTS ESPECIFICOS DE VISTA -->		
+		</div>		
 	</body>
 </html>

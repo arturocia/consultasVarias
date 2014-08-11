@@ -4,9 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 <meta name="layout"/>
 <title>Consulta de autorizados</title>
-
-<script src="<g:resource dir="js" file="jquery-1.11.1.min.js" />"></script>
-
 <link rel="stylesheet" type="text/css" href="<g:resource dir="css" file="autorizados.css" />" />
 <script>
 
@@ -15,41 +12,11 @@ function trResult_click(idSust){
 }
 
 </script>
-
-<style type="text/css">
-.regresar {
-	background-image: url(<g:resource dir="images" file="regresarSolIcon.png" />);
-	background-repeat: no-repeat;
-	background-position: left;
-	
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-left: 24px;
-	
-	/*font-style: italic;*/
-	
-	border-width: 1px; 
-	border-color:#cccccc;
-}
-</style>
-
 </head>
 <body>
   <div class="content">
-  	<!-- INICIA: WIDGET DE TOOLBAR -->
-	<div class="widgetToolbar" >
-		<input id="btnRegresar" type="button" class="regresar" value="Regresar a búsqueda" ></input>
-		
-		<!-- <input id="btnCompletaPersonales" type="button" class="completa" value="Modificar datos personales" ></input> -->
-		<!-- <input id="btnCompleta" type="button" class="completa" value="Modificar solicitud" ></input> -->
-	<!-- <input id="btnEnvia" type="button" class="envia" value="Envíar a institución" ></input> -->
-	</div>
-	<!-- FIN: WIDGET DE TOOLBAR -->
-  
   	<fieldset>
   		<legend><strong>Resultados de la búsqueda</strong></legend>
-  		
-  		
   		
   		<g:paginate next="Siguente" prev="Atras" controller="consultaAutorizados"
             action="showResults" max="${resultsToDisplay}" total="${consultaAutorizadosInstanceListTotal}" params="${params}"/><br/>
@@ -83,12 +50,5 @@ function trResult_click(idSust){
             action="showResults" max="${resultsToDisplay}" total="${consultaAutorizadosInstanceListTotal}" params="${params}"/>
   	</fieldset>
   </div>
-<!-- INICIA: SCRIPTS ESPECIFICOS DE VISTA -->
-	<script type="text/javascript">
-	$("#btnRegresar").click( function(  ){
-		document.location.href='<g:createLink controller="consultaAutorizados" action="search"/>';
-	});
-	</script>
-	<!-- FIN: SCRIPTS ESPECIFICOS DE VISTA -->
 </body>
 </html>
