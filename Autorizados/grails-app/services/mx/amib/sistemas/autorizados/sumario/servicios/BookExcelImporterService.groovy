@@ -79,6 +79,9 @@ class BookExcelImporterService extends AbstractExcelImporter {
 		}
 		return nombres
 	}
+	
+	
+	
 
 	def getCeldas(Boolean abreCertExperiencia=true){
 		def celdas=null
@@ -87,8 +90,7 @@ class BookExcelImporterService extends AbstractExcelImporter {
 
 		nombreHoja=workbook.getSheetAt(0).sheetName
 		log.debug("el nombre de la hoja "+nombreHoja)
-		//XXX: tx_fhfinvigant=folio
-		//XXX: tx_fniniciovigant=revalido
+		
 		log.debug("abrir cert ${abreCertExperiencia}")
 		if(abreCertExperiencia){
 			mapaConf=["sheet":nombreHoja,startRow: 1,columnMap:  [
@@ -107,26 +109,10 @@ class BookExcelImporterService extends AbstractExcelImporter {
 					'M':'tx_institucion',
 					'N':'tx_tipoinstitucion',
 					'O':'tx_estatus'
-					/*
-					 * [tx_matricula]
-				      ,[tx_nombre]
-				      ,[tx_apaterno]
-				      ,[tx_amaterno]
-				      ,[tx_idfiguracert]
-				      ,[tx_figura]
-				      ,[tx_fhiniciovigant]
-				      ,[tx_fhfinvigant]
-				      ,[tx_fhiniciovignva]
-				      ,[tx_fhfinvignva]
-				      ,[tx_fhemisioncarta]
-				      ,[tx_fhrecepcion]
-				      ,[tx_institucion]
-				      ,[tx_tipoinstitucion]
-				      ,[tx_estatus]
-					 */
+					
 				]]
 		}
-		else if (abreCertPuntos){
+		else {
 			mapaConf=["sheet":nombreHoja,startRow: 1,columnMap:  [
 					'A':'tx_matricula',
 					'B':'tx_nombre',
@@ -176,9 +162,21 @@ class BookExcelImporterService extends AbstractExcelImporter {
 					'AP':'evento8'
 				]]
 		}
+	
 		
-		else{
-			mapaConf=["sheet":nombreHoja,startRow: 1,columnMap:[
+			celdas=excelImportService.columns(workbook, mapaConf)
+			log.debug("las celdas resultado "+celdas[0])
+			celdas
+		}
+
+	
+	def getCeldaspfi(Boolean abreCertPfi=true){
+		def celdas=null
+		String nombreHoja=null
+		Map mapaConf=null
+
+		nombreHoja=workbook.getSheetAt(0).sheetName
+		mapaConf=["sheet":nombreHoja,startRow: 1,columnMap:[
 				'A':'tx_matricula',
 				'B':'tx_nombre',
 				'C':'tx_apaterno',
@@ -190,11 +188,11 @@ class BookExcelImporterService extends AbstractExcelImporter {
 				'I':'tx_fhfinvigant',
 				'J':'tx_modalidad'
 			]]
-			
-		}
 		celdas=excelImportService.columns(workbook, mapaConf)
 		log.debug("las celdas resultado "+celdas[0])
 		celdas
+
 	}
+	
 }
 
