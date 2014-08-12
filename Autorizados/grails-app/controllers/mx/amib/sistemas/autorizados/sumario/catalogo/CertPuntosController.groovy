@@ -6,11 +6,20 @@ class CertPuntosController {
 	def bookExcelImporterService
 	def certExperienciaService
 
+	def grailsApplication
+	
 	def index() {
 		redirect(action: "create", params: params)
 	}
 
+	/* http://localhost:8080/Autorizados/certPuntos/create?k3c6e0b8a9c15224a8228b9a98ca1531d=855DBFA442AA4C9FB4846D53E76A5742 */
 	def create() {
+		def key = params.k3c6e0b8a9c15224a8228b9a98ca1531d
+		if(key!=grailsApplication.config.mx.amib.sistemas.autorizados.formkey)
+		{
+			render(status: 404, text: 'ERROR')
+			return 
+		}
 	}
 
 	def upload() {

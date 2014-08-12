@@ -19,7 +19,7 @@ class CertPfiService {
 		String queryStrExecProd=null
 		String nombreTablon=""
 		
-		String nombreSp=""
+		String nombreSp="sp006_incorporaImportadosPorExamenPifi"
 		Set<String> listaColumnas=null
 		def sql = new Sql(dataSource)
 		//		def mapaCeldasFiltrado=[:]

@@ -64,7 +64,7 @@
 					<g:each status="i" in="${sustentanteInstance?.certificaciones}" var="item" >
 			  			<tr class="detailResultRow" >
 			  			
-			  				<g:if test="${todayDate > item.autorizaciones.toList()[0]?.fhFinvigencia}">
+			  				<g:if test="${todayDate > item.autorizaciones.toList()[0]?.fhFinvigencia || todayDate > item.fhInicio}">
 			  					<td>No</td>
 			  				</g:if>
 			  				
@@ -156,7 +156,7 @@
 					<g:each status="i" in="${sustentanteInstance?.certificaciones}" var="item" >
 			  			<tr class="detailResultRow" >
 			  			
-			  				<g:if test="${todayDate > item.fhFin}">
+			  				<g:if test="${todayDate > item.fhFin || todayDate < item.fhInicio }">
 			  					<td>No</td>
 			  				</g:if>
 			  				<g:else>
