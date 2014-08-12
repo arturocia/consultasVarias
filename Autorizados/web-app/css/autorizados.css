@@ -65,3 +65,19 @@ body {
 	padding-left: 6px;
 	padding-right: 3px;
 }
+
+.widgetToolbar{
+	margin: 3px;
+	margin-top: -4px;
+	/*width: 100%; */
+	/*background-image: url('../images/menuToolbar.png'); */
+	/*background-repeat:repeat-x; */
+	font-size: 13px; 
+	background-color: #fafafa; 
+	padding: 10px; 
+	border-width: 1px; 
+	border-style:solid; 
+	border-color:#cccccc;
+	text-align: right;
+	color: #cccccc;
+}
